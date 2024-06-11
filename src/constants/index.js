@@ -15,10 +15,9 @@ import {
     git,
     figma,
     docker,
-    meta,
-    starbucks,
-    tesla,
-    shopify,
+    interlub,
+    prepa7,
+    udg,
     carrent,
     jobit,
     tripguide,
@@ -116,57 +115,46 @@ import {
   
   const experiences = [
     {
-      title: "React.js Developer",
-      company_name: "Starbucks",
-      icon: starbucks,
-      iconBg: "#383E56",
-      date: "March 2020 - April 2021",
+      title: "Software Engineer",
+      company_name: "Interlub",
+      icon: interlub,
+      iconBg: "#F8F8F8",
+      date: "May 2022 - Apr 2024",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Designed and developed a digital transformation project in the company, with an estimated value of $50K USD. This project is expected to generate significant cost savings in paper. Utilizing technologies such as JavaScript, HTML5, PHP, jQuery, Bootstrap and MySQL.",
+        "Increased monthly traffic by 20% on company websites through website maintenance and updates, including Interlub.com, Interglass.global, and Intermol.mx.",
+        "Developed internal software, using these skills and technologies, to create efficient solutions tailored to the needs of each client.",
+        "Modernized the company intranet used for managing user permissions across various internal developments by updating several systems to modern technologies like Node.js, Express, MongoDB, and React.",
+        "Provided technical support (in person, phone, email, chat) to a company of approximately 200 employees, resolving issues related to hardware, software, connectivity, CCTV, operating systems, data backup and security.",
       ],
     },
     {
-      title: "React Native Developer",
-      company_name: "Tesla",
-      icon: tesla,
-      iconBg: "#E6DEDD",
-      date: "Jan 2021 - Feb 2022",
+      title: "Internship",
+      company_name: "Preparatoria 7 UDG",
+      icon: prepa7,
+      iconBg: "#D3D3D3",
+      date: "Nov 2020 - May 2021",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Oversaw the loan and maintenance of over 50 pieces of technological equipment, such as laptops and projectors, ensuring their availability and operation for the use of students and teachers.",
+        "Contributed to software development using NFC cards to streamline the process of acquiring technological equipment in the school, aiming to optimize inventory control.",
+        "Maintained and updated 3 computer labs, ensuring all software was current and hardware remained in optimal condition.",
+        "Provided technical support to over 20 teachers, solving problems on their personal laptops and offering both in-person and remote assistance.",
       ],
     },
     {
-      title: "Web Developer",
-      company_name: "Shopify",
-      icon: shopify,
-      iconBg: "#383E56",
-      date: "Jan 2022 - Jan 2023",
+      title: "Computer Engineer",
+      company_name: "Universidad de Guadalajara",
+      icon: udg,
+      iconBg: "#FFF3E0",
+      date: "Aug 2017 - Jul 2021",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        `Contributed to the development of a mobile application (school project). This application was designed to reinforce 
+        knowledge based on a primary school textbook. The application features interactive 3D models using
+        augmented reality, created with Blender and implemented in Unity. Developed with C#, it also incorporates AI to
+        select questions from a MySQL database using PHP. These questions dynamically adapt to the user's progress,
+        providing a personalized and effective learning experience,`
       ],
-    },
-    {
-      title: "Full stack Developer",
-      company_name: "Meta",
-      icon: meta,
-      iconBg: "#E6DEDD",
-      date: "Jan 2023 - Present",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
+    }
   ];
   
   const testimonials = [
