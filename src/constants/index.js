@@ -4,20 +4,19 @@ import {
     creator,
     web,
     javascript,
-    typescript,
     html,
     css,
     reactjs,
-    redux,
     tailwind,
     nodejs,
     mongodb,
     git,
-    figma,
-    docker,
     interlub,
     prepa7,
     udg,
+    bootstrap,
+    mysql,
+    php,
     carrent,
     jobit,
     tripguide,
@@ -72,16 +71,12 @@ import {
       icon: javascript,
     },
     {
-      name: "TypeScript",
-      icon: typescript,
-    },
-    {
       name: "React JS",
       icon: reactjs,
     },
     {
-      name: "Redux Toolkit",
-      icon: redux,
+      name: "Bootstrap",
+      icon: bootstrap,
     },
     {
       name: "Tailwind CSS",
@@ -96,20 +91,20 @@ import {
       icon: mongodb,
     },
     {
+      name: "MySql",
+      icon: mysql,
+    },
+    {
+      name: "PHP",
+      icon: php,
+    },
+    {
       name: "Three JS",
       icon: threejs,
     },
     {
       name: "git",
       icon: git,
-    },
-    {
-      name: "figma",
-      icon: figma,
-    },
-    {
-      name: "docker",
-      icon: docker,
     },
   ];
   
