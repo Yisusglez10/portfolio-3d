@@ -1,17 +1,25 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Preload, meshBounds, useGLTF } from '@react-three/drei'
+import { OrbitControls, Preload, useGLTF, useAnimations } from '@react-three/drei'
 import CanvasLoader from '../Loader'
 
-const Computers = ( {isMobile} ) => {
+const Computers = ({ isMobile }) => {
 
-  const computer = useGLTF("./desktop_pc/scene.gltf");
+  // const computer = useGLTF("./desktop_pc/scene.gltf");
+  const { scene, animations } = useGLTF("./desktop_pc/scene.gltf");
+  const { actions } = useAnimations(animations, scene);
+
+  useEffect(() => {
+    if (actions) {
+      actions["Panels"].play(); // Reemplaza "AnimationName" con el nombre de tu animación
+    }
+  }, [actions]);
 
   return (
     <mesh>
       <hemisphereLight intensity={0.15} groundColor='black' />
       <pointLight intensity={1} />
-       <spotLight
+      <spotLight
         position={[-2, 5, 1]}
         angle={1}
         penumbra={1}
@@ -20,12 +28,12 @@ const Computers = ( {isMobile} ) => {
         shadow-mapSize={1024}
       />
       <primitive
-        object={computer.scene}
-        scale={isMobile ? 0.7 : 0.75}
-        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
+        object={scene}
+        scale={isMobile ? 0.020 : 0.027}
+        position={isMobile ? [0, -2.2, -0.2] : [0.5, -3, 0.2]}
+        rotation={[-0.01, 1.3, -0.1]}
       />
-    </mesh>
+     </mesh>
   )
 }
 
@@ -53,7 +61,7 @@ const ComputersCanvas = () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
-  
+
 
   return (
     <Canvas

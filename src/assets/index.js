@@ -24,9 +24,8 @@ import interlub from "./company/interlubIcon.png";
 import prepa7 from "./company/prepa7Icon.png";
 import udg from "./company/udgIcon.png";
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
+import crudnode from "./crudnode.png";
+import portfolioScreen from "./portfolioScreen.png";
 
 export {
   logo,
@@ -52,7 +51,6 @@ export {
   interlub,
   prepa7,
   udg,
-  carrent,
-  jobit,
-  tripguide,
+  crudnode,
+  portfolioScreen
 };
