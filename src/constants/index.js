@@ -1,4 +1,3 @@
-import { SoftShadows } from "@react-three/drei";
 import {
   mobile,
   backend,

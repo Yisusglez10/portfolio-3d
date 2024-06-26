@@ -1,19 +1,32 @@
-import React, { Suspense, useEffect, useState } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Preload, useGLTF, useAnimations } from '@react-three/drei'
-import CanvasLoader from '../Loader'
+import React, { Suspense, useEffect, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Preload, useGLTF, useAnimations } from '@react-three/drei';
+import CanvasLoader from '../Loader';
 
-const Computers = ({ isMobile }) => {
-
-  // const computer = useGLTF("./desktop_pc/scene.gltf");
+const Computers = ({ screenWidth }) => {
   const { scene, animations } = useGLTF("./desktop_pc/scene.gltf");
   const { actions } = useAnimations(animations, scene);
 
   useEffect(() => {
     if (actions) {
-      actions["Panels"].play(); // Reemplaza "AnimationName" con el nombre de tu animación
+      actions["Panels"].play();
     }
   }, [actions]);
+
+  let scale, position, rotation;
+  if (screenWidth <= 640) {
+    scale = 0.020;
+    position = [0, -2.2, 0.1];
+    rotation = [-0.01, 1.3, -0.1];
+  } else if (screenWidth <= 1024) {
+    scale = 0.025;
+    position = [0.2, -1.5, 0.2];
+    rotation = [-0.01, 1.3, -0.1];
+  } else {
+    scale = 0.027;
+    position = [0.5, -3, 0.4];
+    rotation = [-0.01, 1.3, -0.1];
+  }
 
   return (
     <mesh>
@@ -29,39 +42,27 @@ const Computers = ({ isMobile }) => {
       />
       <primitive
         object={scene}
-        scale={isMobile ? 0.020 : 0.027}
-        position={isMobile ? [0, -2.2, -0.2] : [0.5, -3, 0.2]}
-        rotation={[-0.01, 1.3, -0.1]}
+        scale={scale}
+        position={position}
+        rotation={rotation}
       />
-     </mesh>
-  )
-}
+    </mesh>
+  );
+};
 
 const ComputersCanvas = () => {
-
-  const [isMobile, setIsMobile] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    // Add a listener for changes to the screen size
-    const mediaQuery = window.matchMedia("(max-width: 500px)");
-
-    // Set the initial value of the `isMobile` state variable
-    setIsMobile(mediaQuery.matches);
-
-    // Define a callback function to handle changes to the media query
-    const handleMediaQueryChange = (event) => {
-      setIsMobile(event.matches);
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
     };
 
-    // Add the callback function as a listener for changes to the media query
-    mediaQuery.addEventListener("change", handleMediaQueryChange);
-
-    // Remove the listener when the component is unmounted
+    window.addEventListener("resize", handleResize);
     return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
-
 
   return (
     <Canvas
@@ -75,14 +76,14 @@ const ComputersCanvas = () => {
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
+          enablePan={false}
         />
-        <Computers isMobile={isMobile} />
+        <Computers screenWidth={screenWidth} />
       </Suspense>
 
       <Preload all />
-
     </Canvas>
-  )
-}
+  );
+};
 
-export default ComputersCanvas
+export default ComputersCanvas;

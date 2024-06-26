@@ -1,18 +1,18 @@
-import { Suspense } from "react"
-import { Canvas } from "@react-three/fiber"
-import { Decal, Float, OrbitControls, Preload, useTexture } from "@react-three/drei"
+import React, { Suspense, useEffect, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { Decal, Float, OrbitControls, Preload, useTexture } from '@react-three/drei';
+import Loader from '../Loader';
 
-import Loader from "../Loader"
-const Ball = (props) => {
-  const [decal] = useTexture([props.imgUrl])
+const Ball = ({ imgUrl }) => {
+  const [decal] = useTexture([imgUrl]);
+
   return (
     <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
-      <ambientLight intensity={0.25} />
-      <directionalLight position={[0, 0, 0.05,]} />
+      
       <mesh castShadow receiveShadow scale={2.75}>
         <icosahedronGeometry args={[1, 1]} />
         <meshStandardMaterial
-          color="#fff8eb"
+          color='#fff8eb'
           polygonOffset
           polygonOffsetFactor={-5}
           flatShading
@@ -25,24 +25,31 @@ const Ball = (props) => {
         />
       </mesh>
     </Float>
-  )
-}
+  );
+};
 
 const BallCanvas = ({ icon }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const userAgent = typeof window.navigator === 'undefined' ? '' : navigator.userAgent;
+    const mobile = Boolean(userAgent.match(/iPhone|iPad|iPod|Android/i));
+    setIsMobile(mobile);
+  }, []);
+
   return (
     <Canvas
       frameloop='demand'
-      dpr={[1, 2]}
+      dpr={[1, isMobile ? 1 : 2]}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<Loader />}>
         <OrbitControls enablePan={false} enableZoom={false} />
         <Ball imgUrl={icon} />
       </Suspense>
-
       <Preload all />
     </Canvas>
-  )
-}
+  );
+};
 
-export default BallCanvas
+export default BallCanvas;
